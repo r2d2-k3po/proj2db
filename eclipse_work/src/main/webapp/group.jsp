@@ -12,6 +12,8 @@
 		   height: 30px;
 		   margin: 3px;
 		   box-shadow: 1px 1px;}
+		   
+	table{margin: 15px;}
 </style>
 </head>
 <body>
@@ -21,16 +23,28 @@
 	<fieldset>
 		<legend>그룹별 재고 수량</legend>
 		
-			<table>
-				<c:forEach items="${plist}" var="item">
+			<table border="1">
 				<tr>
-					<td>${item.code}</td>
-					<td>${item.pname}</td>
-					<td>${item.cost}</td>
-					<td>${item.pnum}</td>
-					<td>${item.jnum}</td>
-					<td>${item.sale}</td>
-					<td>${item.gcode}</td>				
+					<th>그룹이름</th>
+					<th>제품코드</th>
+					<th>제품이름</th>
+					<th>재고수량</th>
+				</tr>					
+					
+				<c:set var="oldGcode" value="z" />
+				<c:set var="idx" value="0" />
+				
+				<c:forEach items="${plist}" var="pitem">
+				<tr>
+					<c:set var="newGcode" value="${pitem.gcode}" />
+					<c:if test="${oldGcode ne newGcode}">
+						<td align="center" rowspan="${pmap.get(pitem.gcode)}">${glist[idx].gname}</td>
+						<c:set var="idx" value="${idx+1}" />
+					</c:if>
+					<c:set var="oldGcode" value="${newGcode}" />
+					<td align="center">${pitem.code}</td>
+					<td>${pitem.pname}</td>
+					<td align="right">${pitem.jnum}</td>			
 				</tr>
 				</c:forEach>
 			</table>

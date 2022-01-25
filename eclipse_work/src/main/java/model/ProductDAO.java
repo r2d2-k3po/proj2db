@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import common.DBConnPool;
 
@@ -10,11 +11,32 @@ public class ProductDAO extends DBConnPool {
 		super();
 	}
 	
+	public HashMap<String, Integer> groupCount() {
+		
+		HashMap<String, Integer> pmap = new HashMap<>();
+		
+		String sql = "SELECT gcode, COUNT(*) FROM product GROUP BY gcode ORDER BY gcode";
+		
+		try {
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			while (rs.next()) {					
+				pmap.put(rs.getString("gcode"), rs.getInt(2));
+			}
+		} catch (Exception e) {
+			System.out.println("groupCount 조회 중 예외 발생");
+			e.printStackTrace();
+		}		
+		
+		return pmap;
+	}
+	
 	public ArrayList<ProductDTO> selectAll() {
 		
 		ArrayList<ProductDTO> prodList = new ArrayList<ProductDTO>();
 		
-		String sql = "SELECT * FROM product";
+		String sql = "SELECT * FROM product ORDER BY gcode, code";
 		
 		try {
 			stmt = con.createStatement();
@@ -34,7 +56,7 @@ public class ProductDAO extends DBConnPool {
 				prodList.add(pdto);
 			}
 		} catch (Exception e) {
-			System.out.println("DB 조회 중 예외 발생");
+			System.out.println("selectAll 조회 중 예외 발생");
 			e.printStackTrace();
 		}		
 		
