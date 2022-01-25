@@ -9,4 +9,14 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>GroupController</display-name>
+    <servlet-name>GroupController</servlet-name>
+    <servlet-class>controller.GroupController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GroupController</servlet-name>
+    <url-pattern>/group.do</url-pattern>
+  </servlet-mapping>
 </web-app>
