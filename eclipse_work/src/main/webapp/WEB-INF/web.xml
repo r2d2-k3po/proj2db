@@ -19,4 +19,14 @@
     <servlet-name>GroupController</servlet-name>
     <url-pattern>/group.do</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ProfitController</display-name>
+    <servlet-name>ProfitController</servlet-name>
+    <servlet-class>controller.ProfitController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProfitController</servlet-name>
+    <url-pattern>/profit.do</url-pattern>
+  </servlet-mapping>
 </web-app>

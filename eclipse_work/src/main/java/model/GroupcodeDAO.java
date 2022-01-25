@@ -29,7 +29,7 @@ public class GroupcodeDAO extends DBConnPool {
 				groupList.add(gdto);
 			}
 		} catch (Exception e) {
-			System.out.println("DB 조회 중 예외 발생");
+			System.out.println("selectAll 조회 중 예외 발생");
 			e.printStackTrace();
 		}		
 		
