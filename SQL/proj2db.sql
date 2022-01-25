@@ -53,4 +53,10 @@ SELECT * FROM product;
 
 SELECT code, gname FROM product p INNER JOIN groupcode g
     ON p.gcode = g.gcode;
+    
+SELECT gcode, COUNT(*) FROM product GROUP BY gcode ORDER BY gcode;
 
+SELECT code, gname FROM product p INNER JOIN groupcode g
+    ON p.gcode = g.gcode;
+    
+SELECT * FROM product ORDER BY gcode, code;
