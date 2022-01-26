@@ -49,4 +49,14 @@
     <servlet-name>InsertController</servlet-name>
     <url-pattern>/insert.do</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SelectController</display-name>
+    <servlet-name>SelectController</servlet-name>
+    <servlet-class>controller.SelectController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectController</servlet-name>
+    <url-pattern>/select.do</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -32,7 +32,33 @@ public class ProductDAO extends DBConnPool {
 		return pmap;
 	}
 	
-public ArrayList<ProductDTO> selectProfit() {
+	public int insert(ProductDTO pdto) {
+		
+		int result = 0;		
+		
+		try {
+			String sql = "INSERT INTO product (code, pname, cost, pnum, jnum, sale, gcode)"
+					   + " VALUES (?,?,?,?,?,?,?)";
+			psmt = con.prepareStatement(sql);
+			
+			psmt.setString(1,  pdto.getCode());
+			psmt.setString(2,  pdto.getPname());
+			psmt.setInt(3,  pdto.getCost());
+			psmt.setInt(4,  pdto.getPnum());
+			psmt.setInt(5,  pdto.getJnum());
+			psmt.setInt(6,  pdto.getSale());
+			psmt.setString(7,  pdto.getGcode());	
+			
+			result = psmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("insert 중 예외 발생");
+			e.printStackTrace();
+		}		
+		
+		return result;
+	}
+
+	public ArrayList<ProductDTO> selectProfit() {
 		
 		ArrayList<ProductDTO> prodList = new ArrayList<ProductDTO>();
 		

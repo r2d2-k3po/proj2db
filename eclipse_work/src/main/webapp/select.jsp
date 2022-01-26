@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>생산관리등록</title>
+<title>생산관리조회수정</title>
 <style>
 	button{font-weight: bold;
 		   width: 70px;
@@ -18,6 +18,7 @@
 		 
 	ul {line-height: 1.8em;}
 		   
+	table{margin: 15px;}
 </style>
 
 <script type="text/javascript">
