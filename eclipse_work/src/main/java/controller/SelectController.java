@@ -17,7 +17,7 @@ public class SelectController extends HttpServlet {
 		
 		int result = -1;
 		req.setAttribute("result", result);
-		req.getRequestDispatcher("/insert.jsp").forward(req, resp);
+		req.getRequestDispatcher("/select.jsp").forward(req, resp);
 	}
 
 	@Override
@@ -39,7 +39,7 @@ public class SelectController extends HttpServlet {
 		pdao.close();			
 		
 		req.setAttribute("result", result);
-		req.getRequestDispatcher("/insert.jsp").forward(req, resp);
+		req.getRequestDispatcher("/select.jsp").forward(req, resp);
 	}
 
 }

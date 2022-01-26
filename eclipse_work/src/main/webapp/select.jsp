@@ -39,12 +39,12 @@
 </head>
 <body>
 
-	<h2>생산관리 등록 화면</h2>
+	<h2>생산관리 조회 &amp; 수정 화면</h2>
 	
 	<fieldset>
-		<legend>생산관리 등록</legend>
+		<legend>생산관리 조회</legend>
 		
-		<form action="/insert.do" method="post" onsubmit="return validateForm(this);">
+		<form action="/select.do" method="post" onsubmit="return validateForm(this);">
 			<ul>
 				<li> <span>제품코드</span> <input type="text" name="code">
 				<li> <span>제품이름</span> <input type="text" name="pname">
@@ -58,7 +58,9 @@
 								<option value="C">냉장고</option>
 							  </select>
 			</ul>		
-			<button type="submit">등록</button>
+			<button type="submit"> 조 회 </button>
+			<button type="button" onclick="location.href='update.do'"> 수 정 </button>
+			<button type="button" onclick="location.href='delete.do'"> 삭 제 </button>
 			<button type="button" onclick="location.href='index.html'">메인화면</button>		
 		</form>		
 			
