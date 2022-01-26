@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>그룹별재고수량</title>
+<title>생산관리등록</title>
 <style>
 	button{font-weight: bold;
 		   width: 70px;
@@ -18,10 +18,10 @@
 </head>
 <body>
 
-	<h2>그룹별 재고 수량 화면</h2>
+	<h2>생산관리 등록 화면</h2>
 	
 	<fieldset>
-		<legend>그룹별 재고 수량</legend>
+		<legend>생산관리 등록</legend>
 		
 			<table border="1">
 				<tr>

@@ -29,4 +29,24 @@
     <servlet-name>ProfitController</servlet-name>
     <url-pattern>/profit.do</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PriorityController</display-name>
+    <servlet-name>PriorityController</servlet-name>
+    <servlet-class>controller.PriorityController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PriorityController</servlet-name>
+    <url-pattern>/priority.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InsertController</display-name>
+    <servlet-name>InsertController</servlet-name>
+    <servlet-class>controller.InsertController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InsertController</servlet-name>
+    <url-pattern>/insert.do</url-pattern>
+  </servlet-mapping>
 </web-app>

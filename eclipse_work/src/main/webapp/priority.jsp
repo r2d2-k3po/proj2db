@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>그룹별재고수량</title>
+<title>우선생산제품</title>
 <style>
 	button{font-weight: bold;
 		   width: 70px;
@@ -18,33 +18,22 @@
 </head>
 <body>
 
-	<h2>그룹별 재고 수량 화면</h2>
+	<h2>우선 생산 제품 화면</h2>
 	
 	<fieldset>
-		<legend>그룹별 재고 수량</legend>
+		<legend>우선 생산 제품</legend>
 		
 			<table border="1">
 				<tr>
-					<th>그룹이름</th>
 					<th>제품코드</th>
 					<th>제품이름</th>
-					<th>재고수량</th>
+					<th>생산필요수량</th>
 				</tr>					
-					
-				<c:set var="oldGcode" value="z" />
-				<c:set var="idx" value="0" />
-				
 				<c:forEach items="${plist}" var="pitem">
 				<tr>
-					<c:set var="newGcode" value="${pitem.gcode}" />
-					<c:if test="${oldGcode ne newGcode}">
-						<td align="center" rowspan="${pmap.get(pitem.gcode)}">${glist[idx].gname}</td>
-						<c:set var="idx" value="${idx+1}" />
-					</c:if>
-					<c:set var="oldGcode" value="${newGcode}" />
 					<td align="center">${pitem.code}</td>
 					<td>${pitem.pname}</td>
-					<td align="right">${pitem.jnum}</td>			
+					<td align="right">${pitem.pnum-pitem.jnum}</td>			
 				</tr>
 				</c:forEach>
 			</table>
