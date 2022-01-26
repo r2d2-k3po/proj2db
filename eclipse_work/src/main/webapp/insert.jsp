@@ -13,8 +13,28 @@
 		   margin: 3px;
 		   box-shadow: 1px 1px;}
 		   
+	span{display:inline-block; 
+		 width: 65px;}
+		 
+	ul {line-height: 1.8em;}
+		   
 	table{margin: 15px;}
 </style>
+
+<script type="text/javascript">
+	function validateForm(from) {
+		
+		
+		
+		
+		
+		
+	}
+
+
+
+</script>
+
 </head>
 <body>
 
@@ -23,33 +43,27 @@
 	<fieldset>
 		<legend>생산관리 등록</legend>
 		
-			<table border="1">
-				<tr>
-					<th>그룹이름</th>
-					<th>제품코드</th>
-					<th>제품이름</th>
-					<th>재고수량</th>
-				</tr>					
-					
-				<c:set var="oldGcode" value="z" />
-				<c:set var="idx" value="0" />
-				
-				<c:forEach items="${plist}" var="pitem">
-				<tr>
-					<c:set var="newGcode" value="${pitem.gcode}" />
-					<c:if test="${oldGcode ne newGcode}">
-						<td align="center" rowspan="${pmap.get(pitem.gcode)}">${glist[idx].gname}</td>
-						<c:set var="idx" value="${idx+1}" />
-					</c:if>
-					<c:set var="oldGcode" value="${newGcode}" />
-					<td align="center">${pitem.code}</td>
-					<td>${pitem.pname}</td>
-					<td align="right">${pitem.jnum}</td>			
-				</tr>
-				</c:forEach>
-			</table>
-
+		<form action="/insert.do" method="post" onsubmit="return validateForm(this);">
+			<ul>
+				<li> <span>제품코드</span> <input type="text" name="code">
+				<li> <span>제품이름</span> <input type="text" name="pname">
+				<li> <span>제품원가</span> <input type="text" name="cost">
+				<li> <span>목표수량</span> <input type="text" name="pnum">
+				<li> <span>재고수량</span> <input type="text" name="jnum">
+				<li> <span>출고가</span> <input type="text" name="sale">
+				<li> <span>그룹이름</span> <select name="gcode">
+								<option value="A">컴퓨터</option>
+								<option value="B">모바일</option>
+								<option value="C">냉장고</option>
+							  </select>
+			</ul>		
+			<button type="submit">등록</button>
 			<button onclick="location.href='index.html'">메인화면</button>
+		
+		</form>
+		
+		
+			
 	</fieldset>
 </body>
 </html>

@@ -60,3 +60,8 @@ SELECT code, gname FROM product p INNER JOIN groupcode g
     ON p.gcode = g.gcode;
     
 SELECT * FROM product ORDER BY gcode, code;
+
+SELECT * FROM product WHERE jnum*5 < pnum ORDER BY gcode, code;
+
+
+
