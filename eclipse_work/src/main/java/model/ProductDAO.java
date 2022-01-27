@@ -58,6 +58,75 @@ public class ProductDAO extends DBConnPool {
 		return result;
 	}
 
+	public ProductDTO selectOne(ProductDTO pdto) {
+				
+		String sql = "SELECT * FROM product WHERE code=?";
+		
+		try {
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, pdto.getCode());
+			rs = psmt.executeQuery();
+			
+			if (rs.next()) {
+				pdto.setPname(rs.getString("pname"));
+				pdto.setCost(rs.getInt("cost"));
+				pdto.setPnum(rs.getInt("pnum"));
+				pdto.setJnum(rs.getInt("jnum"));
+				pdto.setSale(rs.getInt("sale"));
+				pdto.setGcode(rs.getString("gcode").trim());
+			}
+		} catch (Exception e) {
+			System.out.println("selectOne 조회 중 예외 발생");
+			e.printStackTrace();
+		}		
+		
+		return pdto;
+	}
+
+	public int updateOne(ProductDTO pdto) {
+		
+		int result = 0;		
+		
+		try {
+			String sql = "UPDATE product SET pname=?, cost=?, pnum=?, jnum=?, sale=?, gcode=? WHERE code=?";
+			psmt = con.prepareStatement(sql);
+			
+			psmt.setString(1,  pdto.getPname());
+			psmt.setInt(2,  pdto.getCost());
+			psmt.setInt(3,  pdto.getPnum());
+			psmt.setInt(4,  pdto.getJnum());
+			psmt.setInt(5,  pdto.getSale());
+			psmt.setString(6,  pdto.getGcode());	
+			psmt.setString(7,  pdto.getCode());
+			
+			result = psmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("updateOne 중 예외 발생");
+			e.printStackTrace();
+		}		
+		
+		return result;
+	}
+	
+	public int deleteOne(String code) {
+		
+		int result = 0;		
+		
+		try {
+			String sql = "DELETE FROM product WHERE code=?";
+			psmt = con.prepareStatement(sql);
+			
+			psmt.setString(1,  code);
+			
+			result = psmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("deleteOne 중 예외 발생");
+			e.printStackTrace();
+		}		
+		
+		return result;
+	}
+
 	public ArrayList<ProductDTO> selectProfit() {
 		
 		ArrayList<ProductDTO> prodList = new ArrayList<ProductDTO>();

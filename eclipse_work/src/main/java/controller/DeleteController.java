@@ -9,32 +9,19 @@ import model.ProductDTO;
 
 import java.io.IOException;
 
-public class SelectController extends HttpServlet {
-
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		int result = -1;
-		req.setAttribute("result", result);
-		req.getRequestDispatcher("/select.jsp").forward(req, resp);
-	}
+public class DeleteController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		ProductDTO pdto = new ProductDTO();
-		
-		pdto.setCode(req.getParameter("code"));
+				
+		String code =req.getParameter("code");
 		
 		ProductDAO pdao = new ProductDAO();
-		pdto = pdao.selectOne(pdto);
+		int result = pdao.deleteOne(code);
 		
 		pdao.close();			
 		
-		int result = 2;
 		req.setAttribute("result", result);
-		req.setAttribute("pdto", pdto);
 		req.getRequestDispatcher("/select.jsp").forward(req, resp);
 	}
-
 }

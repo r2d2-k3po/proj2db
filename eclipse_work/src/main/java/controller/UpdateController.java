@@ -9,15 +9,7 @@ import model.ProductDTO;
 
 import java.io.IOException;
 
-public class SelectController extends HttpServlet {
-
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		int result = -1;
-		req.setAttribute("result", result);
-		req.getRequestDispatcher("/select.jsp").forward(req, resp);
-	}
+public class UpdateController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -25,15 +17,19 @@ public class SelectController extends HttpServlet {
 		ProductDTO pdto = new ProductDTO();
 		
 		pdto.setCode(req.getParameter("code"));
+		pdto.setPname(req.getParameter("pname"));
+		pdto.setCost(Integer.parseInt(req.getParameter("cost")));
+		pdto.setPnum(Integer.parseInt(req.getParameter("pnum")));
+		pdto.setJnum(Integer.parseInt(req.getParameter("jnum")));
+		pdto.setSale(Integer.parseInt(req.getParameter("sale")));
+		pdto.setGcode(req.getParameter("gcode"));
 		
 		ProductDAO pdao = new ProductDAO();
-		pdto = pdao.selectOne(pdto);
+		int result = pdao.updateOne(pdto);
 		
 		pdao.close();			
 		
-		int result = 2;
 		req.setAttribute("result", result);
-		req.setAttribute("pdto", pdto);
 		req.getRequestDispatcher("/select.jsp").forward(req, resp);
 	}
 
