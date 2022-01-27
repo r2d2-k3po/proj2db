@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>생산관리조회수정</title>
 <style>
-	button{font-weight: bold;
+	.button{font-weight: bold;
 		   width: 70px;
 		   height: 30px;
 		   margin: 3px;
@@ -56,12 +56,12 @@
 								<option value="C" <c:if test="${pdto.gcode eq 'C'}">selected</c:if>>냉장고</option>
 							  </select>
 			</ul>		
-			<input type="submit" onclick="javascript: form.action='/select.do';" value=" 조 회 "/>
-			<input type="submit" onclick="javascript: form.action='/update.do';" value=" 수 정 "/>
-			<input type="submit" onclick="javascript: form.action='/delete.do';" value=" 삭 제 "/>
+			<input class="button" type="submit" onclick="javascript: form.action='/select.do';" value=" 조 회 "/>
+			<input class="button" type="submit" onclick="javascript: form.action='/update.do';" value=" 수 정 "/>
+			<input class="button" type="submit" onclick="javascript: form.action='/delete.do';" value=" 삭 제 "/>
 			
 			
-			<button type="button" onclick="location.href='index.html'">메인화면</button>		
+			<button class="button" type="button" onclick="location.href='index.html'">메인화면</button>		
 		</form>		
 			
 	</fieldset>		
