@@ -1,0 +1,5 @@
+tomcat  server.xml, context.xml  변경됨
+포트 8081
+
+오라클 id : proj2db
+password : 1234
