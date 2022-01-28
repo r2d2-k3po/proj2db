@@ -65,7 +65,10 @@
 		</form>		
 			
 	</fieldset>		
-	${result}
+	
+	<c:if test="${result eq 3}">
+		<script>alert("존재하지 않는 제품코드입니다.");</script>
+	</c:if>
 	
 	<c:if test="${result eq 1}">
 		<script>alert("수정 또는 삭제를 성공하였습니다!");</script>

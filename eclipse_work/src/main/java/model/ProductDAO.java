@@ -32,6 +32,27 @@ public class ProductDAO extends DBConnPool {
 		return pmap;
 	}
 	
+	public int selectOneCount(String code) {
+		
+		String sql = "SELECT COUNT(*) FROM product WHERE code=?";
+		
+		int result =0;
+		
+		try {
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, code);
+			rs = psmt.executeQuery();
+			
+			if (rs.next()) result = rs.getInt(1);
+		} catch (Exception e) {
+			System.out.println("selectOneCount 조회 중 예외 발생");
+			e.printStackTrace();
+		}		
+		
+		return result;
+	}
+	
+	
 	public int insert(ProductDTO pdto) {
 		
 		int result = 0;		

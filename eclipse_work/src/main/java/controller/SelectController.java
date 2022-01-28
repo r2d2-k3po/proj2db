@@ -22,19 +22,25 @@ public class SelectController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		ProductDTO pdto = new ProductDTO();
-		
-		pdto.setCode(req.getParameter("code"));
-		
 		ProductDAO pdao = new ProductDAO();
-		pdto = pdao.selectOne(pdto);
 		
-		pdao.close();			
+		int result = pdao.selectOneCount(req.getParameter("code"));
 		
-		int result = 2;
-		req.setAttribute("result", result);
-		req.setAttribute("pdto", pdto);
-		req.getRequestDispatcher("/select.jsp").forward(req, resp);
+		if (result == 0) {
+			req.setAttribute("result", 3);
+			req.getRequestDispatcher("/select.jsp").forward(req, resp);
+		} else {		
+			ProductDTO pdto = new ProductDTO();			
+			pdto.setCode(req.getParameter("code"));			
+			
+			pdto = pdao.selectOne(pdto);
+			
+			pdao.close();			
+			
+			req.setAttribute("result", 2);
+			req.setAttribute("pdto", pdto);
+			req.getRequestDispatcher("/select.jsp").forward(req, resp);
+		}
 	}
 
 }
